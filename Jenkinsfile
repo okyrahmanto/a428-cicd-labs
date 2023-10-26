@@ -43,11 +43,13 @@ pipeline {
                 
             }
             steps {
-                if (userInput == 'Proceed') {
-                    sh './jenkins/scripts/deliver.sh' 
-                    // sh 'sleep 60' 
-                    // input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
-                    sh './jenkins/scripts/kill.sh' 
+                script {
+                    if (userInput == 'Proceed') {
+                        sh './jenkins/scripts/deliver.sh' 
+                        sh 'sleep 60' 
+                        // input message: 'Sudah selesai menggunakan React App? (Klik "Proceed" untuk mengakhiri)' 
+                        sh './jenkins/scripts/kill.sh' 
+                    }
                 }
             }
         }
